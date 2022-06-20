@@ -35,9 +35,9 @@ while sensors > 0:
         pyautogui.press('enter')
         time.sleep(5)
         pyautogui.leftClick(x = 186, y = 76)
+        input("Sensor #" + str(Ns - sensors + 1))
         Nt = str(int(Nt) + 1).zfill(3)
         pyautogui.getWindowsWithTitle("UniVert - testrun" + Nt + ".tst")[0].activate()
-        input("Sensor #" + str(Ns - sensors + 1))
         sensors = sensors - 1
         measurements = Nd
         pyautogui.leftClick(x = 29, y = 96)
