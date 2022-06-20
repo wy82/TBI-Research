@@ -33,6 +33,7 @@ while sensors > 0:
         pyautogui.press('enter')
         pyautogui.leftClick(x = 556, y = 187)
         pyautogui.write("98")
+        pyautogui.press('enter')
         pyautogui.leftClick(x = 186, y = 76)
         time.sleep(5)
         pyautogui.leftClick(x = 29, y = 96)
