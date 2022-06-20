@@ -29,6 +29,7 @@ while sensors > 0:
         pyautogui.getWindowsWithTitle("UniVert - testrun" + Nt + ".tst")[0].activate()
         pyautogui.hotkey('ctrl','n')
         pyautogui.press('enter')
+        time.sleep(5)
         pyautogui.doubleClick(x = 556, y = 187)
         pyautogui.write("98")
         pyautogui.press('enter')
