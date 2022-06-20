@@ -21,12 +21,10 @@ pyautogui.write("strainintensity({}, {})".format(Ns, Nd))
 pyautogui.press("enter")
 time.sleep(2)
 
+
 while sensors > 0:
     # Switch sensors
     if measurements == 0:
-        input("Sensor #" + str(Ns - sensors + 1))
-        sensors = sensors - 1
-        measurements = Nd
         # Start up UniVert
         pyautogui.getWindowsWithTitle("UniVert - testrun" + Nt + ".tst")[0].activate()
         pyautogui.hotkey('ctrl','n')
@@ -36,7 +34,9 @@ while sensors > 0:
         pyautogui.press('enter')
         time.sleep(2)
         pyautogui.leftClick(x = 186, y = 76)
-        time.sleep(10)
+        input("Sensor #" + str(Ns - sensors + 1))
+        sensors = sensors - 1
+        measurements = Nd
         pyautogui.leftClick(x = 29, y = 96)
         pyautogui.getWindowsWithTitle("MATLAB R2022a - academic use")[0].activate()
         Nt = str(int(Nt) + 1).zfill(3)
