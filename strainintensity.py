@@ -40,7 +40,7 @@ while sensors > 0:
         pyautogui.getWindowsWithTitle("UniVert - testrun" + Nt + ".tst")[0].activate()
         sensors = sensors - 1
         measurements = Nd
-        pyautogui.leftClick(x = 29, y = 96)
+        pyautogui.doubleClick(x = 29, y = 96)
         pyautogui.getWindowsWithTitle("MATLAB R2022a - academic use")[0].activate()
     # Check if holding
     if not yellow:
