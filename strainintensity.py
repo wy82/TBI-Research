@@ -35,7 +35,7 @@ while sensors > 0:
         pyautogui.write("98")
         pyautogui.press('enter')
         pyautogui.leftClick(x = 186, y = 76)
-        time.sleep(5)
+        time.sleep(10)
         pyautogui.leftClick(x = 29, y = 96)
         pyautogui.getWindowsWithTitle("MATLAB R2022a - academic use")[0].activate()
         Nt = str(int(Nt) + 1).zfill(3)
