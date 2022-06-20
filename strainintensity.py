@@ -29,18 +29,19 @@ while sensors > 0:
         pyautogui.getWindowsWithTitle("UniVert - testrun" + Nt + ".tst")[0].activate()
         pyautogui.hotkey('ctrl','n')
         pyautogui.press('enter')
-        time.sleep(10)
+        time.sleep(7.5)
         pyautogui.doubleClick(x = 556, y = 187)
         pyautogui.write("98")
         pyautogui.press('enter')
         time.sleep(5)
         pyautogui.leftClick(x = 186, y = 76)
+        Nt = str(int(Nt) + 1).zfill(3)
+        pyautogui.getWindowsWithTitle("UniVert - testrun" + Nt + ".tst")[0].activate()
         input("Sensor #" + str(Ns - sensors + 1))
         sensors = sensors - 1
         measurements = Nd
         pyautogui.leftClick(x = 29, y = 96)
         pyautogui.getWindowsWithTitle("MATLAB R2022a - academic use")[0].activate()
-        Nt = str(int(Nt) + 1).zfill(3)
     # Check if holding
     if not yellow:
         if pyautogui.pixelMatchesColor(517,282,(255,255,0)):
