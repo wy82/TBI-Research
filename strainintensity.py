@@ -16,7 +16,6 @@ sensors = Ns
 Nt = sys.argv[3]
 
 # Start up MATLAB script
-pyautogui.getWindowsWithTitle("Command Prompt")[0].minimize()
 pyautogui.getWindowsWithTitle("MATLAB R2022a - academic use")[0].activate()
 pyautogui.write("strainintensity({}, {})".format(Ns, Nd))
 pyautogui.press("enter")
@@ -24,7 +23,7 @@ time.sleep(2)
 
 while sensors > 0:
     # Switch sensors
-    if measurements == 0
+    if measurements == 0:
         input("Sensor #" + str(Ns - sensors + 1))
         sensors = sensors - 1
         measurements = Nd
