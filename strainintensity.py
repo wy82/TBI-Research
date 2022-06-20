@@ -33,7 +33,7 @@ while sensors > 0:
         pyautogui.doubleClick(x = 556, y = 187)
         pyautogui.write("98")
         pyautogui.press('enter')
-        time.sleep(5)
+        time.sleep(2.5)
         pyautogui.leftClick(x = 186, y = 76)
         input("Sensor #" + str(Ns - sensors + 1))
         Nt = str(int(Nt) + 1).zfill(3)
