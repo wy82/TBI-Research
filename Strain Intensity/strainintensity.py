@@ -10,15 +10,17 @@ yellow = False
 pyautogui.PAUSE = 0
 Ns = int(sys.argv[1])
 Nd = int(sys.argv[2])
+Nc = int(sys.argv[3])
 measurements = 0
 sensors = Ns
+cycles = Nc
 
-Nt = int(sys.argv[3])
+Nt = int(sys.argv[4])
 nums = [Nt]
 
 # Start up MATLAB script
 pyautogui.getWindowsWithTitle("MATLAB R2022a - academic use")[0].activate()
-pyautogui.write("strainintensity({}, {})".format(Ns, Nd))
+pyautogui.write("strainintensity({}, {}, {})".format(Ns, Nc, Nd))
 pyautogui.press("enter")
 time.sleep(1)
 
@@ -47,7 +49,7 @@ while sensors > 0:
     time.sleep(2)
     pyautogui.leftClick(x = 29, y = 96)
     sensors = sensors - 1
-    measurements = Nd
+    measurements = Nd*Nc
     pyautogui.getWindowsWithTitle("MATLAB R2022a - academic use")[0].activate()
     while measurements > 0:
         # Check if holding
@@ -71,4 +73,4 @@ while sensors > 0:
         pyautogui.press('enter')
         nums.append(Nt)
 
-print(nums[0:-2])
+print(nums[0:-1])
