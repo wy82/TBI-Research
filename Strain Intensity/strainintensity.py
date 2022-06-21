@@ -71,4 +71,4 @@ while sensors > 0:
         pyautogui.press('enter')
         nums.append(Nt)
 
-print(nums)
+print(nums[0:-2])
