@@ -5,8 +5,9 @@ import pyautogui
 import time
 import sys
 import re
+import schedule
+from datetime import timedelta
 
-yellow = False
 pyautogui.PAUSE = 0
 Ns = int(sys.argv[1])
 Nd = int(sys.argv[2])
@@ -51,15 +52,9 @@ while sensors > 0:
     sensors = sensors - 1
     measurements = Nd*Nc
     pyautogui.getWindowsWithTitle("MATLAB R2022a - academic use")[0].activate()
+    schedule.every(0.1).seconds.until(timedelta(seconds = 10.03)).do(job)
     while measurements > 0:
-        # Check if holding
-        if not yellow and pyautogui.pixelMatchesColor(525,267,(255,255,0)):
-            yellow = True
-            pyautogui.press('enter')
-            measurements = measurements - 1
-        # Check if not holding
-        if yellow and pyautogui.pixelMatchesColor(525,267,(255,255,255)):
-            yellow = False
+        schedule.run_pending()
     txt = input("Press 'r' to redo: ")
     Nt = Nt + 1
     if txt == 'r':
@@ -74,3 +69,9 @@ while sensors > 0:
         nums.append(Nt)
 
 print(nums[0:-1])
+
+def job():
+    pyautogui.press('enter')
+    global measurements
+    measurements = measurements - 1
+    print(x)
