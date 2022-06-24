@@ -70,7 +70,7 @@ while cycles > 0:
         if txt != 'r':
             pyautogui.getWindowsWithTitle("MATLAB R2022a - academic use")[0].activate()
             pyautogui.press('enter')
-            nums.append(Nt)
+            nums.append(Nt-4)
         # Redo
         else: 
             pyautogui.getWindowsWithTitle("MATLAB R2022a - academic use")[0].activate()
