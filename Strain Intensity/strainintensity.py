@@ -8,17 +8,18 @@ import re
 
 pyautogui.PAUSE = 0
 Ns = int(sys.argv[1])
-Nd = int(sys.argv[2])
-Nc = int(sys.argv[3])
+Nc = int(sys.argv[2])
+Nd = int(sys.argv[3])
 measurements = 0
 cycles = Nc*Ns
 
 Nt = int(sys.argv[4])
+name = sys.argv[5]
 nums = []
 
 # Start up MATLAB script
 pyautogui.getWindowsWithTitle("MATLAB R2022a - academic use")[0].activate()
-pyautogui.write("strainintensity({}, {}, {})".format(Ns, Nc, Nd))
+pyautogui.write("strainintensity({}, {}, {}, '{}')".format(Ns, Nc, Nd, name))
 pyautogui.press("enter")
 
 while cycles > 0:
@@ -34,7 +35,7 @@ while cycles > 0:
     time.sleep(6)
     # Reset displacement
     pyautogui.doubleClick(x = 556, y = 187)
-    pyautogui.write("98")
+    pyautogui.write("70")
     pyautogui.press('enter')
     time.sleep(1)
     pyautogui.leftClick(x = 186, y = 81)
@@ -54,15 +55,8 @@ while cycles > 0:
     pyautogui.leftClick(x = 29, y = 96)
     pyautogui.getWindowsWithTitle("MATLAB R2022a - academic use")[0].activate()
     time.sleep(0.1)
-    t0 = time.perf_counter()
-    i = 0
-    while measurements > 0:
-        pyautogui.press('enter')
-        measurements = measurements - 1
-        i = i + 1
-        delta = 0.2*i - time.perf_counter() + t0
-        if delta > 0:
-            time.sleep(delta)
+    pyautogui.press('enter')
+    time.sleep(21)
 
     if cycles % Nc == 0:
         txt = input("Press 'r' to redo: ")
