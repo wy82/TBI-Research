@@ -35,7 +35,7 @@ while cycles > 0:
     time.sleep(6)
     # Reset displacement
     pyautogui.doubleClick(x = 556, y = 187)
-    pyautogui.write("70")
+    pyautogui.write("98")
     pyautogui.press('enter')
     time.sleep(1)
     pyautogui.leftClick(x = 186, y = 81)
