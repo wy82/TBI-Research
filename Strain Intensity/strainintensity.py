@@ -5,6 +5,7 @@ import pyautogui
 import time
 import sys
 import re
+import PySimpleGUI as sg
 
 pyautogui.PAUSE = 0
 Ns = int(sys.argv[1])
@@ -17,30 +18,59 @@ Nt = int(sys.argv[4])
 name = sys.argv[5]
 nums = []
 
+# Theme
+
+default = ('Helvetica', 12)
+sg.theme('TanBlue')
+
+# Layout
+
+column = [
+    [
+        sg.Text("Number of Sensors: "),
+        sg.In(size =(25,1), enable_events=True, key = "Ns"),
+        sg.Text("Number of Cycles: "),
+        sg.In(size =(25,1), enable_events=True, key = "Nc"),
+        sg.Text("Number of Displacements: "),
+        sg.In(size =(25,1), enable_events=True, key = "Nd"),
+        sg.Text("Test Run Number: "),
+        sg.In(size =(25,1), enable_events=True, key = "Nt"),
+        sg.Text("Save As: "),
+        sg.In(size =(25,1), enable_events=True, key = "name"),
+    ]
+]
+
+layout = [
+    [sg.Column(column, vertical_alignment = "center")],
+    [sg.Button('Begin Test')]
+]
+
+# Window
+
+window = sg.Window('Discrepancy Reporter', layout, grab_anywhere = True, size = (350,100), element_justification = 'c', font = default)
+
 # Start up MATLAB script
 pyautogui.getWindowsWithTitle("MATLAB R2022a - academic use")[0].activate()
 pyautogui.write("strainintensity({}, {}, {}, '{}')".format(Ns, Nc, Nd, name))
 pyautogui.press("enter")
 
 while cycles > 0:
-    time.sleep(1)
+    time.sleep(3)
     # Start up UniVert
     titles = pyautogui.getAllTitles()
     r = re.compile("UniVert.*")
     uni = list(filter(r.match,titles))
     pyautogui.getWindowsWithTitle(uni[0])[0].activate()
     # Create new test
+    pyautogui.leftClick(x = 60, y = 96)
+    time.sleep(2)
     pyautogui.hotkey('ctrl','n')
     pyautogui.press('enter')
-    time.sleep(6)
+    time.sleep(8)
     # Reset displacement
-    pyautogui.doubleClick(x = 556, y = 187)
-    pyautogui.write("98")
-    pyautogui.press('enter')
-    time.sleep(1)
-    pyautogui.leftClick(x = 186, y = 81)
-    time.sleep(4)
-    # Wait for input to start
+    pyautogui.doubleClick(x = 186, y = 81)
+    time.sleep(8)
+    # Wait for input to stat
     if cycles % Nc == 0:
         input("Sensor #" + str((Nc*Ns - cycles)//Nc + 1))
         pyautogui.getWindowsWithTitle("Command Prompt")[0].minimize()
@@ -64,7 +94,7 @@ while cycles > 0:
         if txt != 'r':
             pyautogui.getWindowsWithTitle("MATLAB R2022a - academic use")[0].activate()
             pyautogui.press('enter')
-            nums.append(Nt-4)
+            nums.append(Nt-Nc+1)
         # Redo
         else: 
             pyautogui.getWindowsWithTitle("MATLAB R2022a - academic use")[0].activate()
