@@ -1,0 +1,14 @@
+Set,SetName,Cycle,Phase,StartTime(s),DataTime(s),Repeat
+1,lightguide100stretch,1,Stretch,0,0,1
+1,lightguide100stretch,1,Hold,1,1,1
+1,lightguide100stretch,2,Stretch,2,2,1
+1,lightguide100stretch,2,Hold,3,3,1
+1,lightguide100stretch,3,Stretch,4,4,1
+1,lightguide100stretch,3,Hold,5,5,1
+1,lightguide100stretch,4,Stretch,6,6,1
+1,lightguide100stretch,4,Hold,7,7,1
+1,lightguide100stretch,5,Stretch,8,8,1
+1,lightguide100stretch,5,Hold,9,9,1
+1,lightguide100stretch,6,Stretch,10,10,1
+1,lightguide100stretch,6,Hold,11,11,1
+1,lightguide100stretch,7,Stretch,12,12,1
