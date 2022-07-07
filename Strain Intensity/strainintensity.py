@@ -43,7 +43,7 @@ layout = [
 
 # Window
 
-window = sg.Window('Discrepancy Reporter', layout, grab_anywhere = True, size = (350,300), font = default, resizable = True)
+window = sg.Window('Strain Intensity Test', layout, grab_anywhere = True, size = (350,300), font = default, resizable = True)
 
 # Event Loop
 while True:
