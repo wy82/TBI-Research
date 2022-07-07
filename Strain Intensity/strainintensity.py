@@ -3,10 +3,8 @@
 # Setup
 import pyautogui
 import time
-import sys
 import re
 import PySimpleGUI as sg
-import pyinputplus as pyip
 
 pyautogui.PAUSE = 0
 
