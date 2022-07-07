@@ -1,0 +1,21 @@
+New Log File 
+UniVert Controller
+	Detected on COM3
+Serial port \\.\COM3
+	successfully reconfigured.
+
+CellScale Biomat. Testing
+6-Axis Controller #70002
+Firmware Rev 2.18
+Copyright 2021
+Software Version 11.15
+
+Initializing X LoadCell
+	50.0N, Ser.No. 102183
+Initializing Actuator
+Initializing WebCam
+System Ready!
+Thu Jul-07-2022 10:06:14.611
+
+Sampling Finished
+FINISHED TEST
